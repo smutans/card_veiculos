@@ -16,7 +16,9 @@ import { NoteService } from '../../app/note.service';
 })
 export class DetailPage {
 
+
   note;
+  deleteNoteFlag = false;
   newNoteFlag = false;
   constructor(
         public navCtrl: NavController,
@@ -28,9 +30,10 @@ export class DetailPage {
     if(!this.note){
       this.note = {
         id: '',
-        content: '',
-        title: '',
-        date: ''
+        nome: '',
+        modelo: '',
+        cor: '',
+        placa: ''
       }
       this.newNoteFlag = true
     }
@@ -41,9 +44,14 @@ export class DetailPage {
     console.log('ionViewDidLoad DetailPage');
   }
   ionViewWillLeave (){
-    if (this.newNoteFlag)
-      this.noteService.addNote(this.note);
-  }
+    if (this.newNoteFlag){
+    if (this.note.nome != "" && this.note.modelo != "" && this.note.cor != "" && this.note.placa != "")
+    this.noteService.addNote(this.note);
+    }
+    else if (!this.deleteNoteFlag){
+    this.noteService.editNote(this.note);
+    }
+    }
 
   onTrash (){
     let minhaCaixinha = this.alertCtrl.create({
@@ -56,6 +64,7 @@ export class DetailPage {
         {
           text: "OK",
           handler: () => {
+            this.deleteNoteFlag = true;
             this.noteService.removeNote(this.note)
             this.navCtrl.pop();
           }

@@ -21,18 +21,25 @@
 
     <ion-item>
       <!--teste-->
-      <ion-label fixed>Title</ion-label>
-      <ion-input type="text" [(ngModel)]="note.title"></ion-input>
+      <ion-label fixed>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="note.nome"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Date</ion-label>
-      <ion-datetime  displayFormat="DD/MM/YYYY" [(ngModel)]="note.date"></ion-datetime>
+      <ion-label fixed>Modelo</ion-label>
+      <ion-input  type="text" [(ngModel)]="note.modelo"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-textarea placeholder="Content" [(ngModel)]="note.content"></ion-textarea>
+      <ion-label fixed>Cor</ion-label>
+      <ion-input  type="text" [(ngModel)]="note.cor"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Placa</ion-label>
+      <ion-input  type="text" [(ngModel)]="note.placa"></ion-input>
+    </ion-item>
+
 
   </ion-list>
 
